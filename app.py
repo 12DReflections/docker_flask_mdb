@@ -1,10 +1,13 @@
+import os
 from flask import Flask, redirect, url_for, request, render_template
 from pymongo import MongoClient
 
 app = Flask(__name__)
 
 # Special Client for Mongo in Container     ip of container     container port (default)
-client = MongoClient(os.environ['TODO_DB_1_PORT_27017_TCP_ADDR, 27017)
+client = MongoClient(
+    os.environ['DB_PORT_27017_TCP_ADDR'],
+    27017)
 db = client.tododb
 
 @app.route('/')
